@@ -1,0 +1,241 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav {
+    margin: 10px 0;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background: #35424a;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background: #35424a;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background: #2c3e50;
+}
+
+/* Horizontal, larger, black menu */
+.main-menu {
+  list-style: none;
+  margin: 1.25rem 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.main-menu li {
+  margin: 0;
+}
+
+.main-menu a {
+  color: #000;
+  text-decoration: none;
+  font-size: 1.25rem; /* larger text */
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  display: inline-block;
+}
+
+.main-menu a:hover,
+.main-menu a:focus {
+  text-decoration: underline;
+}
+
+/* small-screen tweak */
+@media (max-width: 480px) {
+  .main-menu {
+    gap: 1rem;
+  }
+  .main-menu a {
+    font-size: 1.1rem;
+  }
+}
+
+/* Calm, soft religious background (warm parchment) and readable dark text */
+:root{
+  --bg: #f5efe6; /* soft parchment / calm */
+  --text: #0b0b0b; /* near-black for high contrast */
+  --accent: #6b5b4b; /* muted brown accent */
+}
+
+html,body{
+  height:100%;
+  margin:0;
+  font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Header menu: horizontal, larger, black font */
+header {
+  padding: 0.6rem 1rem;
+  background: transparent;
+}
+
+.main-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.main-menu a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 0.35rem 0.5rem;
+}
+
+.main-menu a:hover,
+.main-menu a:focus {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Hero section */
+.hero-section{
+  padding: 2rem 1rem;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero-inner{
+  max-width:900px;
+}
+
+.hero-figure{
+  margin: 1.25rem auto;
+}
+
+.hero-image{
+  max-width: 380px;
+  width: 80%;
+  height: auto;
+  display:block;
+  margin: 0.5rem auto;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  background: white;
+  padding: 0.5rem;
+}
+
+/* caption style for image credit */
+.credit{
+  font-size: 0.85rem;
+  color: #333;
+  margin-top: 0.25rem;
+}
+
+/* Scroll button */
+.scroll-down{
+  display:inline-block;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 24px;
+  background: rgba(11,11,11,0.06);
+  color: var(--text);
+  text-decoration:none;
+  font-weight:600;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+.scroll-down:hover{ background: rgba(11,11,11,0.10); }
+
+/* Quick links in main */
+.quick-links {
+  list-style: none;
+  padding: 0;
+  display:flex;
+  gap:1rem;
+  justify-content:center;
+  margin-top:1rem;
+}
+
+.quick-links a{
+  color:var(--text);
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.6);
+}
+
+/* Responsive tweaks */
+@media (max-width:600px){
+  .main-menu a { font-size: 1rem; }
+  .hero-image { max-width: 260px; }
+}
