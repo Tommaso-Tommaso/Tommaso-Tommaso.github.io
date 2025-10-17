@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Events — Coastal Community of John of the Cross</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    /* Local calendar styles */
+    main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    .calendar-container { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .calendar { background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 6px 16px rgba(0,0,0,0.06); width: 320px; }
+    .calendar .month-title { text-align:center; font-weight:700; margin-bottom:0.5rem; }
+    table.calendar-table { width:100%; border-collapse: collapse; }
+    table.calendar-table th { text-align:center; padding:0.35rem 0; font-weight:600; color:#333; background:transparent; }
+    table.calendar-table td { width:14.285%; height:48px; text-align:center; vertical-align:top; padding:6px; border-radius:6px; }
+    td.day { font-weight:600; color:#111; }
+    td.empty { color:#bbb; }
+    td.today { background:#f0e7db; border:1px solid #e0d6c8; }
+    .events-list { margin-top:0.6rem; font-size:0.9rem; color:#333; text-align:left; }
+    .events-list li { margin:0.25rem 0; }
+    @media (max-width:720px) {
+      .calendar { width: 100%; max-width:520px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+
+  <main>
+    <h1>Events — This month and next</h1>
+    <p>Below are calendars for the current month and the following month. Click a date to see/attach events (sample events shown).</p>
+
+    <div class="calendar-container" id="calendars"></div>
+
+    <section style="margin-top:1.5rem">
+      <h2>Upcoming / Sample events</h2>
+      <ul id="event-summary" class="events-list">
+        <!-- populated by script -->
+      </ul>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+
+  <script>
+    (function(){
+      const weekdayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      const calendarsRoot = document.getElementById('calendars');
+      const eventSummary = document.getElementById('event-summary');
+
+      // Sample events map: 'YYYY-MM-DD' => [ 'Event title' , ... ]
+      // Replace or extend these with your real events.
+      const events = {
+        // Example: today's sample event
+        // dynamically add a sample for demonstration
+      };
+
+      // helper to format YYYY-MM-DD
+      function ymd(y,m,d){
+        const mm = String(m+1).padStart(2,'0');
+        const dd = String(d).padStart(2,'0');
+        return `${y}-${mm}-${dd}`;
+      }
+
+      // build calendar for given year, month (0-based)
+      function buildCalendar(year, month){
+        const container = document.createElement('div');
+        container.className = 'calendar';
+
+        const title = document.createElement('div');
+        title.className = 'month-title';
+        const monthName = new Date(year, month).toLocaleString(undefined, { month: 'long' });
+        title.textContent = `${monthName} ${year}`;
+        container.appendChild(title);
+
+        const table = document.createElement('table');
+        table.className = 'calendar-table';
+        const thead = document.createElement('thead');
+        const headRow = document.createElement('tr');
+        weekdayNames.forEach(w => {
+          const th = document.createElement('th');
+          th.textContent = w;
+          headRow.appendChild(th);
+        });
+        thead.appendChild(headRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        let row = document.createElement('tr');
+        // empty cells before first day
+        for(let i=0;i<firstDay;i++){
+          const td = document.createElement('td');
+          td.className = 'empty';
+          row.appendChild(td);
+        }
+        const today = new Date();
+        for(let day=1, slot=firstDay; day<=daysInMonth; day++, slot++){
+          if(slot % 7 === 0){
+            tbody.appendChild(row);
+            row = document.createElement('tr');
+          }
+          const td = document.createElement('td');
+          td.className = 'day';
+          td.dataset.date = ymd(year,month,day);
+          td.innerHTML = `<div>${day}</div>`;
+          // highlight today
+          if(year===today.getFullYear() && month===today.getMonth() && day===today.getDate()){
+            td.classList.add('today');
+          }
+          // if events exist for this date, add a small marker
+          const key = td.dataset.date;
+          if(events[key] && events[key].length){
+            const marker = document.createElement('div');
+            marker.style.fontSize = '0.75rem';
+            marker.style.marginTop = '4px';
+            marker.textContent = events[key].length + ' event' + (events[key].length>1?'s':'');
+            td.appendChild(marker);
+          }
+          // click to show events in summary area
+          td.addEventListener('click', () => {
+            showEventsForDate(key);
+          });
+          row.appendChild(td);
+        }
+        // fill trailing empty cells
+        while(row.children.length < 7){
+          const td = document.createElement('td');
+          td.className = 'empty';
+          row.appendChild(td);
+        }
+        tbody.appendChild(row);
+        table.appendChild(tbody);
+        container.appendChild(table);
+        return container;
+      }
+
+      function showEventsForDate(ymdKey){
+        eventSummary.innerHTML = '';
+        const list = events[ymdKey];
+        const title = document.createElement('li');
+        title.style.fontWeight = '700';
+        title.textContent = `Events for ${ymdKey}:`;
+        eventSummary.appendChild(title);
+        if(!list || list.length===0){
+          const none = document.createElement('li');
+          none.textContent = 'No events scheduled.';
+          eventSummary.appendChild(none);
+          return;
+        }
+        list.forEach(ev => {
+          const li = document.createElement('li');
+          li.textContent = ev;
+          eventSummary.appendChild(li);
+        });
+      }
+
+      // prepare sample event(s) for demonstration: add one for today and one next month
+      const now = new Date();
+      events[ymd(now.getFullYear(), now.getMonth(), now.getDate())] = ['Community prayer — 7:00 PM'];
+      const nextMonth = new Date(now.getFullYear(), now.getMonth()+1, 1);
+      events[ymd(nextMonth.getFullYear(), nextMonth.getMonth(), 10)] = ['Monthly meeting — 6:30 PM'];
+
+      // render current month and next month side-by-side
+      const curY = now.getFullYear();
+      const curM = now.getMonth();
+      calendarsRoot.appendChild(buildCalendar(curY, curM));
+      // next month handling year rollover
+      const nextY = (curM===11) ? curY+1 : curY;
+      const nextM = (curM===11) ? 0 : curM+1;
+      calendarsRoot.appendChild(buildCalendar(nextY, nextM));
+
+      // show today's events by default
+      showEventsForDate(ymd(curY,curM,now.getDate()));
+    })();
+  </script>
+</body>
+</html>
