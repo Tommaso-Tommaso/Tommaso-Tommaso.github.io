@@ -183,6 +183,12 @@ nav {
   text-decoration: underline;
 }
 
+/* Current page highlight */
+.main-menu a.active{
+  color: #6b5b4b !important;
+  text-decoration: underline;
+}
+
 /* Small screen fallback */
 @media (max-width: 480px) {
   .main-menu {
