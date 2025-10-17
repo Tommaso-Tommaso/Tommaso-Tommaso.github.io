@@ -17,9 +17,11 @@ nav {
 }
 
 nav a {
-    color: #ffffff;
+    color: #000000;
     text-decoration: none;
     margin: 0 15px;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 nav a:hover {
@@ -94,11 +96,11 @@ p {
 }
 
 .main-menu a {
-  color: #000;
+  color: #000000;
   text-decoration: none;
-  font-size: 1.25rem; /* larger text */
-  font-weight: 600;
-  padding: 0.25rem 0.5rem;
+  font-size: 1.35rem; /* larger text */
+  font-weight: 700;
+  padding: 0.35rem 0.6rem;
   display: inline-block;
 }
 
@@ -152,16 +154,16 @@ header {
 }
 
 .main-menu a {
-  color: var(--text);
+  color: #000000; /* force black for menu */
   text-decoration: none;
-  font-size: 1.125rem;
-  font-weight: 600;
-  padding: 0.35rem 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  padding: 0.35rem 0.6rem;
 }
 
 .main-menu a:hover,
 .main-menu a:focus {
-  color: var(--accent);
+  color: #000000;
   text-decoration: underline;
 }
 
@@ -236,6 +238,6 @@ header {
 
 /* Responsive tweaks */
 @media (max-width:600px){
-  .main-menu a { font-size: 1rem; }
+  .main-menu a { font-size: 1.15rem; }
   .hero-image { max-width: 260px; }
 }
