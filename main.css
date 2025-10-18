@@ -470,6 +470,13 @@ a:focus{ outline: 3px solid rgba(107,91,75,0.35); outline-offset: 2px; }
   transform: translateY(0);
 }
 
+/* Allow JS to toggle dropdowns (mobile/touch) by adding an "active" state */
+.dropdown.active .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 /* Two Column Layout */
 .dropdown-content.two-column {
   min-width: 500px;
@@ -624,7 +631,8 @@ a:focus{ outline: 3px solid rgba(107,91,75,0.35); outline-offset: 2px; }
   
   .main-menu {
     position: fixed;
-    top: 100%;
+    /* place the mobile menu just under the header instead of off-screen bottom */
+    top: 80px;
     left: 0;
     right: 0;
     background: white;
@@ -776,11 +784,7 @@ a:focus{ outline: 3px solid rgba(107,91,75,0.35); outline-offset: 2px; }
   font-weight: 500;
 }
 
-.saint-photo:before {
-  content: attr(alt);
-  text-align: center;
-  padding: 1rem;
-}
+/* Images already provide alt text via the HTML; remove pseudo-element that duplicated/destructively displayed it */
 
 .saint-card:hover .saint-photo {
   transform: scale(1.05);
