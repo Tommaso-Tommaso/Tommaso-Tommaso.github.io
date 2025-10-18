@@ -1,0 +1,11 @@
+{
+  "name": "tommaso-site-scripts",
+  "version": "1.0.0",
+  "description": "Helper scripts for Tommaso site (image conversion)",
+  "scripts": {
+    "convert-images": "node scripts/convert-images.js --quality=80"
+  },
+  "dependencies": {
+    "sharp": "^0.32.0"
+  }
+}

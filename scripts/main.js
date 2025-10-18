@@ -17,9 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Mobile menu toggle
     function toggleMobileMenu() {
+        // ensure the mobile menu is positioned under the header
+        adjustMobileMenuPosition();
+
         mobileToggle.classList.toggle('active');
         mainMenu.classList.toggle('active');
-        
+
         // Prevent body scroll when menu is open
         if (mainMenu.classList.contains('active')) {
             document.body.style.overflow = 'hidden';
@@ -139,8 +142,31 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileToggle.classList.remove('active');
             mainMenu.classList.remove('active');
             document.body.style.overflow = '';
+            // remove any inline top style on desktop
+            mainMenu.style.top = '';
         }
     });
+
+    // Dynamically adjust the mobile menu position so it sits just under the fixed header
+    function adjustMobileMenuPosition() {
+        if (!header || !mainMenu) return;
+        try {
+            const headerHeight = header.getBoundingClientRect().height;
+            // apply only for small screens where the mobile menu is fixed
+            if (window.innerWidth <= 768) {
+                mainMenu.style.top = `${Math.ceil(headerHeight)}px`;
+            } else {
+                mainMenu.style.top = '';
+            }
+        } catch (e) {
+            // silent fail - not critical
+        }
+    }
+
+    // run once on load
+    adjustMobileMenuPosition();
+    // also adjust on orientation change / resize
+    window.addEventListener('resize', adjustMobileMenuPosition);
     
     // Preload critical images
     function preloadImages() {
