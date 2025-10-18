@@ -715,17 +715,17 @@ a:focus{ outline: 3px solid rgba(107,91,75,0.35); outline-offset: 2px; }
 /* ===== SAINTS SECTION ===== */
 
 .saints-section {
-  margin-top: 4rem;
-  padding: 2rem 0;
+  margin-top: 2rem; /* reduced gap from previous section */
+  padding: 1.25rem 0; /* less vertical padding */
 }
 
 .saints-section h2 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.2rem;
+  font-size: 2rem; /* slightly smaller */
   font-weight: 600;
   text-align: center;
   color: var(--accent);
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem; /* reduced bottom space */
   position: relative;
 }
 
