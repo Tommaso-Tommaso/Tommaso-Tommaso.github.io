@@ -207,7 +207,7 @@ nav {
 
 /* Hero section */
 .hero-section{
-  padding: 2rem 1rem;
+  padding: 1.25rem 1rem; /* reduced vertical padding */
   display:flex;
   justify-content:center;
   align-items:center;
@@ -219,19 +219,19 @@ nav {
 }
 
 .hero-figure{
-  margin: 1.25rem auto;
+  margin: 0.75rem auto; /* smaller vertical gap around image */
 }
 
 .hero-image{
-  max-width: 380px;
+  max-width: 360px; /* slightly smaller image */
   width: 80%;
   height: auto;
   display:block;
-  margin: 0.5rem auto;
+  margin: 0.4rem auto;
   border-radius: 6px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   background: white;
-  padding: 0.5rem;
+  padding: 0.4rem;
 }
 
 /* caption style for image credit */
@@ -854,3 +854,10 @@ a:focus{ outline: 3px solid rgba(107,91,75,0.35); outline-offset: 2px; }
     padding: 1rem;
   }
 }
+
+@media (max-width: 900px) {
+  /* no special hero stacking needed for single-column layout */
+}
+
+/* Adjust heading sizes for clearer hierarchy */
+/* keep default heading sizes */
