@@ -4,6 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Events — Coastal Community of John of the Cross</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
   <style>
     /* Local calendar styles */
@@ -25,17 +28,127 @@
   </style>
 </head>
 <body>
-  <header>
+  <header class="sticky-nav">
     <nav aria-label="Main navigation">
-      <ul class="main-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="members.html">Members</a></li>
-        <li><a href="events.html" class="active">Events</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="links.html">Links</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+      <div class="nav-container">
+        <div class="nav-brand">
+          <a href="index.html">Coastal Community of John of the Cross</a>
+        </div>
+        
+        <ul class="main-menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">About Us <span class="dropdown-arrow">▾</span></a>
+            <div class="dropdown-content">
+              <div class="dropdown-section">
+                <h4>Our Community</h4>
+                <a href="about.html#mission">Our Mission</a>
+                <a href="about.html#who-we-are">Who We Are (OCDS / Carmelite Family)</a>
+                <a href="about.html#patron-saints">Patron Saints</a>
+                <a href="about.html#history">History of Our Community</a>
+                <a href="about.html#leadership">Leadership & Contact Team</a>
+                <a href="about.html#join">Visit / Join Us</a>
+              </div>
+              <div class="dropdown-sidebar">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg" alt="St. John of the Cross" class="sidebar-image">
+                <a href="about.html" class="learn-more-btn">Learn More</a>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Formation <span class="dropdown-arrow">▾</span></a>
+            <div class="dropdown-content">
+              <div class="dropdown-section">
+                <h4>Formation Process</h4>
+                <a href="formation.html#what-is">What is OCDS Formation?</a>
+                <a href="formation.html#stages">Stages of Formation</a>
+                <a href="formation.html#schedule">Schedule of Formation Meetings</a>
+                <a href="formation.html#readings">Recommended Readings & Texts</a>
+                <a href="formation.html#rule">Rule of Life / Constitutions</a>
+                <a href="formation.html#prayer">Prayer & Liturgy of the Hours Guide</a>
+                <a href="formation.html#downloads" class="download-all">📥 Download All Documents</a>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Community Life <span class="dropdown-arrow">▾</span></a>
+            <div class="dropdown-content">
+              <div class="dropdown-section">
+                <h4>Community Activities</h4>
+                <a href="community.html#calendar">Calendar of Meetings</a>
+                <a href="community.html#apostolates">Apostolates / Service Projects</a>
+                <a href="community.html#gallery">Photo Gallery 📸</a>
+                <a href="community.html#testimonies">Member Reflections & Testimonies</a>
+                <a href="community.html#family">Family Spirituality Corner</a>
+              </div>
+              <div class="dropdown-sidebar">
+                <div class="photo-carousel">
+                  <div class="carousel-item active">Beauty of Carmel</div>
+                  <div class="carousel-item">Community Life</div>
+                  <div class="carousel-item">Spiritual Growth</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Resources <span class="dropdown-arrow">▾</span></a>
+            <div class="dropdown-content two-column">
+              <div class="dropdown-section">
+                <h4>Documents & Writings</h4>
+                <a href="resources.html#documents">Carmelite Documents & Writings</a>
+                <a href="resources.html#saints">Carmelite Saints Library</a>
+                <a href="resources.html#articles">Formation Articles / Blog</a>
+                <a href="resources.html#books">Suggested Books / Reading List</a>
+              </div>
+              <div class="dropdown-section">
+                <h4>Multimedia & Links</h4>
+                <a href="resources.html#audio">Audio & Video Talks</a>
+                <a href="resources.html#provinces">Links to Carmelite Provinces & Orders</a>
+                <a href="resources.html">View All Resources</a>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle active">Events <span class="dropdown-arrow">▾</span></a>
+            <div class="dropdown-content">
+              <div class="dropdown-section">
+                <h4>Upcoming Events</h4>
+                <a href="events.html#upcoming">📅 Upcoming Events</a>
+                <a href="events.html#retreat">Annual Retreat Info</a>
+                <a href="events.html#gatherings">Regional OCDS Gatherings</a>
+                <a href="events.html#workshops">Parish Talks & Workshops</a>
+                <a href="events.html#register">Register for an Event</a>
+              </div>
+              <div class="dropdown-sidebar">
+                <div class="event-preview">
+                  <div class="event-card">Oct 25 – Community Retreat</div>
+                  <div class="event-card">Nov 10 – Carmelite Family Day</div>
+                  <div class="event-card">Dec 8 – Immaculate Conception Mass</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Contact <span class="dropdown-arrow">▾</span></a>
+            <div class="dropdown-content">
+              <div class="dropdown-section">
+                <h4>Get in Touch</h4>
+                <a href="contact.html#form">Contact Form</a>
+                <a href="contact.html#directions">Directions & Map</a>
+                <a href="contact.html#leadership">Leadership Emails</a>
+                <a href="contact.html#prayer">Prayer Intentions Form</a>
+                <a href="contact.html#newsletter">Newsletter Signup</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+        
+        <div class="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -54,6 +167,7 @@
   </main>
 
   <!-- FOOTER -->
+  <script src="scripts/main.js"></script>
 
   <script>
     (function(){

@@ -129,11 +129,16 @@ p {
 html,body{
   height:100%;
   margin:0;
-  font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Inter", "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
+}
+
+/* Add padding to body to account for fixed header */
+body {
+  padding-top: 80px;
 }
 
 /* Header menu: horizontal, larger, black font */
@@ -273,6 +278,12 @@ nav {
 @media (max-width:600px){
   .main-menu a { font-size: 1rem; }
   .hero-image { max-width: 260px; }
+  h1 {
+    white-space: normal;
+    text-overflow: unset;
+    overflow: visible;
+    font-size: clamp(1.4rem, 4vw + 0.5rem, 1.8rem);
+  }
 }
 /* --- Enhanced visuals appended --- */
 /* Header subtle divider */
@@ -282,9 +293,13 @@ header {
 
 /* Typography */
 h1{
-  font-size: clamp(1.8rem, 3.2vw + 1rem, 2.4rem);
-  line-height: 1.2;
+  font-size: clamp(1.4rem, 2.4vw + 0.6rem, 1.9rem);
+  line-height: 1.1;
   margin: 0.5rem 0 0.25rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 h2{
@@ -338,3 +353,500 @@ main a:hover{
 
 /* Focus outline for accessibility */
 a:focus{ outline: 3px solid rgba(107,91,75,0.35); outline-offset: 2px; }
+
+/* ===== DROPDOWN NAVIGATION SYSTEM ===== */
+
+/* Sticky Navigation */
+.sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(245, 239, 230, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.sticky-nav.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+/* Navigation Container */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  position: relative;
+}
+
+/* Brand/Logo */
+.nav-brand a {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Main Menu */
+.main-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0;
+  align-items: center;
+}
+
+.main-menu li {
+  position: relative;
+  margin: 0;
+}
+
+/* Top Level Links */
+.main-menu > li > a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 1rem 1.2rem;
+  display: block;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.main-menu > li > a:hover,
+.main-menu > li > a:focus {
+  color: var(--accent);
+  background: rgba(107, 91, 75, 0.1);
+}
+
+.main-menu > li > a.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Dropdown Arrow */
+.dropdown-arrow {
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+  transition: transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Content */
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.1);
+  min-width: 320px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1001;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Two Column Layout */
+.dropdown-content.two-column {
+  min-width: 500px;
+}
+
+/* Dropdown Sections */
+.dropdown-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.dropdown-section h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 0.8rem 0;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid rgba(107, 91, 75, 0.2);
+}
+
+.dropdown-section a {
+  display: block;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.4rem 0;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.dropdown-section a:hover {
+  color: var(--accent);
+  padding-left: 0.5rem;
+  background: rgba(107, 91, 75, 0.05);
+}
+
+.dropdown-section a.download-all {
+  background: var(--accent);
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  margin-top: 0.8rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.dropdown-section a.download-all:hover {
+  background: #5a4a3a;
+  padding-left: 1rem;
+}
+
+/* Dropdown Sidebar */
+.dropdown-sidebar {
+  width: 200px;
+  padding-left: 1rem;
+  border-left: 1px solid rgba(0,0,0,0.1);
+}
+
+.sidebar-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+}
+
+.learn-more-btn {
+  display: block;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.learn-more-btn:hover {
+  background: #5a4a3a;
+}
+
+/* Photo Carousel */
+.photo-carousel {
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #f5efe6, #e8ddd4);
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.carousel-item.active {
+  opacity: 1;
+}
+
+/* Event Preview */
+.event-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.event-card {
+  background: rgba(107, 91, 75, 0.1);
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--text);
+  border-left: 3px solid var(--accent);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--text);
+  margin: 2px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .nav-brand a {
+    font-size: 0.9rem;
+  }
+  
+  .main-menu {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 1rem 0;
+  }
+  
+  .main-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .main-menu > li {
+    width: 100%;
+  }
+  
+  .main-menu > li > a {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .dropdown-content {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: rgba(107, 91, 75, 0.05);
+    margin: 0.5rem 1rem;
+    border-radius: 6px;
+    padding: 1rem;
+  }
+  
+  .dropdown-content.two-column {
+    min-width: auto;
+  }
+  
+  .dropdown-sidebar {
+    display: none;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 0.8rem;
+  }
+  
+  .nav-brand a {
+    font-size: 0.8rem;
+  }
+  
+  .dropdown-content {
+    margin: 0.5rem 0.8rem;
+  }
+}
+
+/* ===== SAINTS SECTION ===== */
+
+.saints-section {
+  margin-top: 4rem;
+  padding: 2rem 0;
+}
+
+.saints-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.saints-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.saints-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.saint-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(107, 91, 75, 0.1);
+}
+
+.saint-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.saint-image {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+}
+
+.saint-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  background: linear-gradient(135deg, #f5efe6, #e8ddd4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.saint-photo:before {
+  content: attr(alt);
+  text-align: center;
+  padding: 1rem;
+}
+
+.saint-card:hover .saint-photo {
+  transform: scale(1.05);
+}
+
+.saint-content {
+  padding: 1.5rem;
+}
+
+.saint-content h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+}
+
+.saint-content p {
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Responsive adjustments for Saints section */
+@media (max-width: 768px) {
+  .saints-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 0.8rem;
+  }
+  
+  .saints-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .saint-image {
+    height: 250px;
+  }
+  
+  .saint-content {
+    padding: 1.2rem;
+  }
+  
+  .saint-content h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .saints-section {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+  }
+  
+  .saints-grid {
+    gap: 1.5rem;
+  }
+  
+  .saint-image {
+    height: 200px;
+  }
+  
+  .saint-content {
+    padding: 1rem;
+  }
+}
