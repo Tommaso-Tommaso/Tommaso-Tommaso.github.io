@@ -1,13 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About Us — Coastal Community of John of the Cross</title>
+  <title>Formation — Coastal Community of John of the Cross</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
+  <style>
+    main{max-width:900px;margin:2rem auto;padding:0 1rem}
+    .section-note{color:#444;font-size:.95rem;margin:.5rem 0 1rem}
+  </style>
 </head>
 <body>
   <header class="sticky-nav">
@@ -16,18 +20,16 @@
         <div class="nav-brand">
           <a href="index.html">Coastal Community of John of the Cross</a>
         </div>
-        
         <ul class="main-menu">
           <li><a href="index.html">Home</a></li>
-          
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle active">About Us <span class="dropdown-arrow">▾</span></a>
+            <a href="#" class="dropdown-toggle">About Us <span class="dropdown-arrow">▾</span></a>
             <div class="dropdown-content">
               <div class="dropdown-section">
                 <h4>Our Community</h4>
-                <a href="about.html#mission">Who We Are</a>
-                <a href="about.html#who-we-are">Our Carmelite Family (OCDS)</a>
-                <a href="about.html#patron-saints">Patron Saints</a>
+                <a href="who-we-are.html">Who We Are</a>
+                <a href="carmelite-family-ocds.html">Our Carmelite Family (OCDS)</a>
+                <a href="patron-saints.html">Patron Saints</a>
               </div>
               <div class="dropdown-sidebar">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg" alt="St. John of the Cross" class="sidebar-image">
@@ -35,16 +37,15 @@
               </div>
             </div>
           </li>
-          
           <li class="dropdown">
             <a href="#" class="dropdown-toggle">Community Life <span class="dropdown-arrow">▾</span></a>
             <div class="dropdown-content">
               <div class="dropdown-section">
                 <h4>Community Activities</h4>
-                <a href="community.html#calendar">Calendar of Meetings</a>
-                <a href="community.html#gallery">Photo Gallery 📸</a>
-                <a href="community.html#testimonies">Member Reflections & Testimonies</a>
-                <a href="events.html#upcoming">Monthly Meetings</a>
+                <a href="calendar.html">Calendar of Meetings</a>
+                <a href="gallery.html">Photo Gallery 📸</a>
+                <a href="testimonies.html">Member Reflections & Testimonies</a>
+                <a href="calendar.html">Monthly Meetings</a>
                 <a href="events.html#workshops">Other events</a>
               </div>
               <div class="dropdown-sidebar">
@@ -56,43 +57,40 @@
               </div>
             </div>
           </li>
-          
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle">Resources <span class="dropdown-arrow">▾</span></a>
+            <a href="#" class="dropdown-toggle active">Resources <span class="dropdown-arrow">▾</span></a>
             <div class="dropdown-content two-column">
               <div class="dropdown-section">
                 <h4>Formation & Documents</h4>
                 <a href="formation.html#what-is">What is OCDS Formation?</a>
                 <a href="readings.html">Recommended Readings & Texts</a>
-                <a href="formation.html#rule">Rule of Life / Constitutions</a>
-                <a href="formation.html#prayer">Prayer & Liturgy of the Hours Guide</a>
+                <a href="rule-of-life.html">Rule of Life / Constitutions</a>
+                <a href="prayer-liturgy-hours.html">Prayer & Liturgy of the Hours Guide</a>
                 <h4>Documents & Writings</h4>
-                <a href="resources.html#documents">Carmelite Documents & Writings</a>
-                <a href="resources.html#saints">Carmelite Saints Library</a>
-                <a href="resources.html#articles">Formation Articles / Blog</a>
-                <a href="resources.html#books">Suggested Books / Reading List</a>
+                <a href="documents.html">Carmelite Documents & Writings</a>
+                <a href="saints-library.html">Carmelite Saints Library</a>
+                <a href="articles.html">Formation Articles / Blog</a>
+                <a href="books.html">Suggested Books / Reading List</a>
               </div>
               <div class="dropdown-section">
                 <h4>Multimedia & Links</h4>
-                <a href="resources.html#audio">Audio & Video Talks</a>
-                <a href="resources.html#provinces">Links to Carmelite Provinces & Orders</a>
+                <a href="audio-video.html">Audio & Video Talks</a>
+                <a href="provinces-orders.html">Links to Carmelite Provinces & Orders</a>
                 <a href="resources.html">View All Resources</a>
               </div>
             </div>
           </li>
-          
           <li class="dropdown">
             <a href="#" class="dropdown-toggle">Contact <span class="dropdown-arrow">▾</span></a>
             <div class="dropdown-content">
               <div class="dropdown-section">
                 <h4>Get in Touch</h4>
                 <a href="contact.html#form">Email us</a>
-                <a href="contact.html#directions">Directions & Map</a>
+                <a href="directions.html">Directions & Map</a>
               </div>
             </div>
           </li>
         </ul>
-        
         <div class="mobile-menu-toggle">
           <span></span>
           <span></span>
@@ -103,12 +101,43 @@
   </header>
 
   <main>
-    <h1>About Us</h1>
-    <p>Learn about the Coastal Community of John of the Cross: our mission, history, and activities. Replace this with your own content.</p>
-    <p><strong>Meeting schedule:</strong> We meet on the 4th Friday of each month.</p>
+    <h1>Formation</h1>
+
+    <section id="what-is">
+      <h2>What is OCDS Formation?</h2>
+      <p class="section-note">Overview of the lay Carmelite (OCDS) formation process and its aims.</p>
+      <ul>
+        <li>Inquiry & Aspirancy — initial discernment and introduction to Carmel</li>
+        <li>Initial Formation (Candidacy) — foundations in prayer and spirituality</li>
+        <li>Temporary Promise — living the charism with guidance</li>
+        <li>Definitive Promise — lifelong commitment in the secular state</li>
+      </ul>
+      <p>See more detail in <a href="what-is-ocds-formation.html">our formation overview</a>.</p>
+    </section>
+
+    <section id="readings" style="margin-top:1.5rem">
+      <h2>Recommended Readings & Texts</h2>
+      <p class="section-note">General Catholic resources and study starting points.</p>
+      <ul>
+        <li><a href="readings.html">Open the full list of recommended readings</a></li>
+      </ul>
+    </section>
+
+    <section id="rule" style="margin-top:1.5rem">
+      <h2>Rule of Life / Constitutions</h2>
+      <ul>
+        <li><a href="rule-of-life.html">Overview and links to official texts</a></li>
+      </ul>
+    </section>
+
+    <section id="prayer" style="margin-top:1.5rem">
+      <h2>Prayer & Liturgy of the Hours</h2>
+      <ul>
+        <li><a href="prayer-liturgy-hours.html">Basic guide and resources</a></li>
+      </ul>
+    </section>
   </main>
 
-  <!-- FOOTER -->
   <script src="scripts/main.js"></script>
 </body>
 </html>

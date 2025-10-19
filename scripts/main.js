@@ -1,105 +1,86 @@
 // Dropdown Navigation and Mobile Menu Functionality
 
-document.addEventListener('DOMContentLoaded', function() {
+function CarmeliteInitNav() {
     const header = document.querySelector('.sticky-nav');
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
     const mainMenu = document.querySelector('.main-menu');
     const dropdowns = document.querySelectorAll('.dropdown');
-    
-    // Sticky header scroll effect
+
     function handleScroll() {
+        if (!header) return;
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
     }
-    
-    // Mobile menu toggle
-    function toggleMobileMenu() {
-        // ensure the mobile menu is positioned under the header
-        adjustMobileMenuPosition();
 
+    function adjustMobileMenuPosition() {
+        if (!header || !mainMenu) return;
+        try {
+            const headerHeight = header.getBoundingClientRect().height;
+            if (window.innerWidth <= 768) {
+                mainMenu.style.top = `${Math.ceil(headerHeight)}px`;
+            } else {
+                mainMenu.style.top = '';
+            }
+        } catch (e) {}
+    }
+
+    function toggleMobileMenu() {
+        adjustMobileMenuPosition();
+        if (!mobileToggle || !mainMenu) return;
         mobileToggle.classList.toggle('active');
         mainMenu.classList.toggle('active');
-
-        // Prevent body scroll when menu is open
-        if (mainMenu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+        document.body.style.overflow = mainMenu.classList.contains('active') ? 'hidden' : '';
     }
-    
-    // Close mobile menu when clicking outside
+
     function closeMobileMenu(event) {
+        if (!mainMenu || !mobileToggle) return;
         if (!mainMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
             mobileToggle.classList.remove('active');
             mainMenu.classList.remove('active');
             document.body.style.overflow = '';
         }
     }
-    
-    // Handle dropdown hover delays for better UX
+
     let hoverTimeout;
-    
     function handleDropdownHover(dropdown, isEntering) {
         clearTimeout(hoverTimeout);
-        
-        if (isEntering) {
-            dropdown.classList.add('hover');
-        } else {
-            hoverTimeout = setTimeout(() => {
-                dropdown.classList.remove('hover');
-            }, 150);
-        }
+        if (isEntering) dropdown.classList.add('hover');
+        else hoverTimeout = setTimeout(() => dropdown.classList.remove('hover'), 150);
     }
-    
-    // Photo carousel animation
+
     function initPhotoCarousel() {
         const carousels = document.querySelectorAll('.photo-carousel');
-        
         carousels.forEach(carousel => {
             const items = carousel.querySelectorAll('.carousel-item');
             let currentIndex = 0;
-            
             function rotateCarousel() {
-                items.forEach((item, index) => {
-                    item.classList.toggle('active', index === currentIndex);
-                });
+                items.forEach((item, index) => item.classList.toggle('active', index === currentIndex));
                 currentIndex = (currentIndex + 1) % items.length;
             }
-            
-            // Start rotation every 3 seconds
             setInterval(rotateCarousel, 3000);
         });
     }
-    
-    // Smooth scroll for anchor links
+
     function initSmoothScroll() {
         const anchorLinks = document.querySelectorAll('a[href^="#"]');
-        
         anchorLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
                 if (href === '#') return;
-                
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
     }
-    
-    // Keyboard navigation for accessibility
+
     function initKeyboardNavigation() {
         const menuItems = document.querySelectorAll('.main-menu a, .dropdown-content a');
-        
         menuItems.forEach(item => {
             item.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -109,78 +90,56 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-    
-    // Event listeners
+
+    // Bind listeners
     window.addEventListener('scroll', handleScroll);
-    mobileToggle.addEventListener('click', toggleMobileMenu);
+    if (mobileToggle) mobileToggle.addEventListener('click', toggleMobileMenu);
     document.addEventListener('click', closeMobileMenu);
-    
-    // Dropdown hover events
+
     dropdowns.forEach(dropdown => {
         const toggle = dropdown.querySelector('.dropdown-toggle');
-        
         dropdown.addEventListener('mouseenter', () => handleDropdownHover(dropdown, true));
         dropdown.addEventListener('mouseleave', () => handleDropdownHover(dropdown, false));
-        
-        // Touch support for mobile
-        toggle.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
-            }
-        });
+        if (toggle) {
+            toggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        }
     });
-    
-    // Initialize features
+
     initPhotoCarousel();
     initSmoothScroll();
     initKeyboardNavigation();
-    
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            mobileToggle.classList.remove('active');
-            mainMenu.classList.remove('active');
-            document.body.style.overflow = '';
-            // remove any inline top style on desktop
-            mainMenu.style.top = '';
-        }
-    });
-
-    // Dynamically adjust the mobile menu position so it sits just under the fixed header
-    function adjustMobileMenuPosition() {
-        if (!header || !mainMenu) return;
-        try {
-            const headerHeight = header.getBoundingClientRect().height;
-            // apply only for small screens where the mobile menu is fixed
-            if (window.innerWidth <= 768) {
-                mainMenu.style.top = `${Math.ceil(headerHeight)}px`;
-            } else {
-                mainMenu.style.top = '';
-            }
-        } catch (e) {
-            // silent fail - not critical
-        }
-    }
-
-    // run once on load
     adjustMobileMenuPosition();
-    // also adjust on orientation change / resize
     window.addEventListener('resize', adjustMobileMenuPosition);
-    
+
     // Preload critical images
-    function preloadImages() {
-        const images = [
-            'https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg'
-        ];
-        
-        images.forEach(src => {
-            const img = new Image();
-            img.src = src;
-        });
+    const preloads = [
+        'https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg'
+    ];
+    preloads.forEach(src => { const img = new Image(); img.src = src; });
+}
+
+document.addEventListener('DOMContentLoaded', async function() {
+    const header = document.querySelector('.sticky-nav');
+    // Try to load shared nav partial
+    try {
+        if (header) {
+            const resp = await fetch('partials/nav.html', { cache: 'no-cache' });
+            if (resp.ok) {
+                const html = await resp.text();
+                header.innerHTML = html;
+            }
+        }
+    } catch (e) {
+        // ignore if partial not found; fallback to inline nav
     }
-    
-    preloadImages();
+
+    // Initialize nav behaviors (works for both inline or injected nav)
+    CarmeliteInitNav();
 });
 
 // Utility function for external use
