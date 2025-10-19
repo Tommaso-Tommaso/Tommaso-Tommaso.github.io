@@ -117,8 +117,11 @@
   </header>
 
   <main>
-    <h1>Events — This month and next</h1>
-    <p>Our community meets on the 4th Friday of each month. Below are calendars for the current month and the following month. Click a date to see/attach events (sample events shown).</p>
+    <h1>Events — Meetings and Activities</h1>
+    <p>Our community meets on the 4th Friday of each month. Below are calendars for the current month, next month, and the following month. Click a date to see events.</p>
+    <p style="background:#fff7e6;border:1px solid #f3d7a6;color:#7a4b00;padding:.65rem .8rem;border-radius:6px;margin:.75rem 0 1rem 0;">
+      <strong>Notice:</strong> Nov 8 — Saint Elizabeth memorial, community breakfast after 8.30 Mass.
+    </p>
 
     <div class="calendar-container" id="calendars"></div>
 
@@ -274,20 +277,25 @@
 
       // prepare sample event(s) for demonstration: add one for today and one next month
       const now = new Date();
-      const nextMonth = new Date(now.getFullYear(), now.getMonth()+1, 1);
-      // add recurring meeting: 4th Friday for current and next months
+      // render current, next, and following months
       const curY = now.getFullYear();
       const curM = now.getMonth();
       const nextY = (curM===11) ? curY+1 : curY;
       const nextM = (curM===11) ? 0 : curM+1;
+      const next2Y = (nextM===11) ? nextY+1 : nextY;
+      const next2M = (nextM===11) ? 0 : nextM+1;
       const curFourthFri = fourthFridayDate(curY, curM);
       const nextFourthFri = fourthFridayDate(nextY, nextM);
+      const next2FourthFri = fourthFridayDate(next2Y, next2M);
       const curFourthKey = ymd(curY, curM, curFourthFri);
       const nextFourthKey = ymd(nextY, nextM, nextFourthFri);
+      const next2FourthKey = ymd(next2Y, next2M, next2FourthFri);
       meetingDays.add(curFourthKey);
       meetingDays.add(nextFourthKey);
+      meetingDays.add(next2FourthKey);
       events[curFourthKey] = (events[curFourthKey] || []).concat(['Monthly meeting']);
       events[nextFourthKey] = (events[nextFourthKey] || []).concat(['Monthly meeting']);
+      events[next2FourthKey] = (events[next2FourthKey] || []).concat(['Monthly meeting']);
 
       // St. Elizabeth of the Trinity — November 8: Breakfast after Mass
       const elizNov8Key = ymd(curY, 10, 8); // month index 10 = November
@@ -295,12 +303,17 @@
 
       // render current month and next month side-by-side
       calendarsRoot.appendChild(buildCalendar(curY, curM));
-      // next month handling year rollover
       calendarsRoot.appendChild(buildCalendar(nextY, nextM));
+      calendarsRoot.appendChild(buildCalendar(next2Y, next2M));
 
       // show today's events by default
       showEventsForDate(ymd(curY,curM,now.getDate()));
     })();
   </script>
+  <div style="max-width:1100px;margin:0 auto;padding:0 1rem 2rem 1rem;color:#555;font-size:.95rem;">
+    <hr style="margin:1.25rem 0;" />
+    <p><strong>Legend:</strong> M.M. = Monthly Meetings</p>
+    <p><strong>Note:</strong> Nov 8 — Saint Elizabeth memorial, community breakfast after 8.30 Mass.</p>
+  </div>
 </body>
 </html>

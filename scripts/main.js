@@ -128,10 +128,24 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Try to load shared nav partial
     try {
         if (header) {
-            const resp = await fetch('partials/nav.html', { cache: 'no-cache' });
-            if (resp.ok) {
-                const html = await resp.text();
-                header.innerHTML = html;
+            let loaded = false;
+            try {
+                const resp = await fetch('partials/nav.html', { cache: 'no-cache' });
+                if (resp.ok) {
+                    const html = await resp.text();
+                    header.innerHTML = html;
+                    loaded = true;
+                }
+            } catch (e) {}
+            if (!loaded) {
+                try {
+                    const resp2 = await fetch('/partials/nav.html', { cache: 'no-cache' });
+                    if (resp2.ok) {
+                        const html2 = await resp2.text();
+                        header.innerHTML = html2;
+                        loaded = true;
+                    }
+                } catch (e2) {}
             }
         }
     } catch (e) {
