@@ -9,23 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
   <style>
-    /* Local calendar styles */
-    main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
-    .calendar-container { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-    .calendar { background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 6px 16px rgba(0,0,0,0.06); width: 320px; }
-    .calendar .month-title { text-align:center; font-weight:700; margin-bottom:0.5rem; }
-    table.calendar-table { width:100%; border-collapse: collapse; }
-    table.calendar-table th { text-align:center; padding:0.35rem 0; font-weight:600; color:#333; background:transparent; }
-    table.calendar-table td { width:14.285%; height:48px; text-align:center; vertical-align:top; padding:6px; border-radius:6px; }
-    td.day { font-weight:600; color:#111; }
-    td.empty { color:#bbb; }
-    td.today { background:#f0e7db; border:1px solid #e0d6c8; }
-    td.meeting-day { background:#eef6ff; border:1px solid #cfe3ff; }
-    .events-list { margin-top:0.6rem; font-size:0.9rem; color:#333; text-align:left; }
-    .events-list li { margin:0.25rem 0; }
-    @media (max-width:720px) {
-      .calendar { width: 100%; max-width:520px; }
-    }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    .events-list { list-style: disc; padding-left: 1.25rem; }
+    .events-list li { margin: .35rem 0; }
   </style>
 </head>
 <body>
@@ -60,8 +46,7 @@
                 <a href="community.html#calendar">Calendar of Meetings</a>
                 <a href="community.html#gallery">Photo Gallery 📸</a>
                 <a href="community.html#testimonies">Member Reflections & Testimonies</a>
-                <a href="events.html#upcoming">Monthly Meetings</a>
-                <a href="events.html#workshops">Other events</a>
+                <a href="events.html#workshops">Our own studies</a>
               </div>
               <div class="dropdown-sidebar">
                 <div class="photo-carousel">
@@ -117,203 +102,15 @@
   </header>
 
   <main>
-    <h1>Events — Meetings and Activities</h1>
-    <p>Our community meets on the 4th Friday of each month. Below are calendars for the current month, next month, and the following month. Click a date to see events.</p>
-    <p style="background:#fff7e6;border:1px solid #f3d7a6;color:#7a4b00;padding:.65rem .8rem;border-radius:6px;margin:.75rem 0 1rem 0;">
-      <strong>Notice:</strong> Nov 8 — Saint Elizabeth memorial, community breakfast after 8.30 Mass.
-    </p>
+    <h1 id="workshops" style="scroll-margin-top: 140px;">Our Own Studies</h1>
 
-    <div class="calendar-container" id="calendars"></div>
-
-    <section style="margin-top:1.5rem">
-      <h2>Monthly Meetings</h2>
-      <ul id="event-summary" class="events-list">
-        <!-- populated by script -->
-      </ul>
-      <p id="meeting-note" style="margin-top:0.5rem; font-style:italic;">Friday morning at 9.30 after mass @ Father's Pat Kitchen</p>
-    </section>
-
-    <section id="workshops" style="margin-top:2rem">
-      <h2>Other Events</h2>
+    <section style="margin-top:1rem;">
       <ul class="events-list">
-        <li>Sat Nov 8 — St. Elizabeth of the Trinity: Breakfast after Mass</li>
+        <li>"Elizabeth of the Trinity" by Steve Attias</li>
       </ul>
     </section>
   </main>
-
   <!-- FOOTER -->
   <script src="scripts/main.js"></script>
-
-  <script>
-    (function(){
-      const weekdayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-      const calendarsRoot = document.getElementById('calendars');
-      const eventSummary = document.getElementById('event-summary');
-
-      // Sample events map: 'YYYY-MM-DD' => [ 'Event title' , ... ]
-      // Replace or extend these with your real events.
-      const events = {
-        // Example: today's sample event
-        // dynamically add a sample for demonstration
-      };
-
-      // Track meeting days to highlight in calendars
-      const meetingDays = new Set();
-
-      // helper to format YYYY-MM-DD
-      function ymd(y,m,d){
-        const mm = String(m+1).padStart(2,'0');
-        const dd = String(d).padStart(2,'0');
-        return `${y}-${mm}-${dd}`;
-      }
-
-      // get the date (1-31) of the 4th Friday for a given year and 0-based month
-      function fourthFridayDate(year, month){
-        // Find first Friday (weekday 5) of the month
-        const firstDayW = new Date(year, month, 1).getDay();
-        const offsetToFriday = (5 - firstDayW + 7) % 7; // days from 1st to first Friday
-        const firstFriday = 1 + offsetToFriday;
-        return firstFriday + 21; // 4th Friday = first Friday + 3 weeks
-      }
-
-      // build calendar for given year, month (0-based)
-      function buildCalendar(year, month){
-        const container = document.createElement('div');
-        container.className = 'calendar';
-
-        const title = document.createElement('div');
-        title.className = 'month-title';
-        const monthName = new Date(year, month).toLocaleString(undefined, { month: 'long' });
-        title.textContent = `${monthName} ${year}`;
-        container.appendChild(title);
-
-        const table = document.createElement('table');
-        table.className = 'calendar-table';
-        const thead = document.createElement('thead');
-        const headRow = document.createElement('tr');
-        weekdayNames.forEach(w => {
-          const th = document.createElement('th');
-          th.textContent = w;
-          headRow.appendChild(th);
-        });
-        thead.appendChild(headRow);
-        table.appendChild(thead);
-
-        const tbody = document.createElement('tbody');
-        const firstDay = new Date(year, month, 1).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        let row = document.createElement('tr');
-        // empty cells before first day
-        for(let i=0;i<firstDay;i++){
-          const td = document.createElement('td');
-          td.className = 'empty';
-          row.appendChild(td);
-        }
-        const today = new Date();
-        for(let day=1, slot=firstDay; day<=daysInMonth; day++, slot++){
-          if(slot % 7 === 0){
-            tbody.appendChild(row);
-            row = document.createElement('tr');
-          }
-          const td = document.createElement('td');
-          td.className = 'day';
-          const key = ymd(year,month,day);
-          td.dataset.date = key;
-          td.innerHTML = `<div>${day}</div>`;
-          // highlight today
-          if(year===today.getFullYear() && month===today.getMonth() && day===today.getDate()){
-            td.classList.add('today');
-          }
-          // highlight meeting day (4th Friday)
-          if(meetingDays.has(key)){
-            td.classList.add('meeting-day');
-            // place marker for Monthly Meeting days
-            if(meetingDays.has(key)){
-              const marker = document.createElement('div');
-              marker.style.fontSize = '0.75rem';
-              marker.style.marginTop = '4px';
-              marker.style.fontWeight = '700';
-              marker.textContent = 'M.M.';
-              td.appendChild(marker);
-            }
-          }
-          // click to show events in summary area
-          td.addEventListener('click', () => {
-            showEventsForDate(key);
-          });
-          row.appendChild(td);
-        }
-        // fill trailing empty cells
-        while(row.children.length < 7){
-          const td = document.createElement('td');
-          td.className = 'empty';
-          row.appendChild(td);
-        }
-        tbody.appendChild(row);
-        table.appendChild(tbody);
-        container.appendChild(table);
-        return container;
-      }
-
-      function showEventsForDate(ymdKey){
-        eventSummary.innerHTML = '';
-        const list = events[ymdKey];
-        const title = document.createElement('li');
-        title.style.fontWeight = '700';
-        title.textContent = `Events for ${ymdKey}:`;
-        eventSummary.appendChild(title);
-        if(!list || list.length===0){
-          const none = document.createElement('li');
-          none.textContent = 'No events scheduled.';
-          eventSummary.appendChild(none);
-          return;
-        }
-        list.forEach(ev => {
-          const li = document.createElement('li');
-          li.textContent = ev;
-          eventSummary.appendChild(li);
-        });
-      }
-
-      // prepare sample event(s) for demonstration: add one for today and one next month
-      const now = new Date();
-      // render current, next, and following months
-      const curY = now.getFullYear();
-      const curM = now.getMonth();
-      const nextY = (curM===11) ? curY+1 : curY;
-      const nextM = (curM===11) ? 0 : curM+1;
-      const next2Y = (nextM===11) ? nextY+1 : nextY;
-      const next2M = (nextM===11) ? 0 : nextM+1;
-      const curFourthFri = fourthFridayDate(curY, curM);
-      const nextFourthFri = fourthFridayDate(nextY, nextM);
-      const next2FourthFri = fourthFridayDate(next2Y, next2M);
-      const curFourthKey = ymd(curY, curM, curFourthFri);
-      const nextFourthKey = ymd(nextY, nextM, nextFourthFri);
-      const next2FourthKey = ymd(next2Y, next2M, next2FourthFri);
-      meetingDays.add(curFourthKey);
-      meetingDays.add(nextFourthKey);
-      meetingDays.add(next2FourthKey);
-      events[curFourthKey] = (events[curFourthKey] || []).concat(['Monthly meeting']);
-      events[nextFourthKey] = (events[nextFourthKey] || []).concat(['Monthly meeting']);
-      events[next2FourthKey] = (events[next2FourthKey] || []).concat(['Monthly meeting']);
-
-      // St. Elizabeth of the Trinity — November 8: Breakfast after Mass
-      const elizNov8Key = ymd(curY, 10, 8); // month index 10 = November
-      events[elizNov8Key] = (events[elizNov8Key] || []).concat(['St. Elizabeth of the Trinity — Breakfast after Mass']);
-
-      // render current month and next month side-by-side
-      calendarsRoot.appendChild(buildCalendar(curY, curM));
-      calendarsRoot.appendChild(buildCalendar(nextY, nextM));
-      calendarsRoot.appendChild(buildCalendar(next2Y, next2M));
-
-      // show today's events by default
-      showEventsForDate(ymd(curY,curM,now.getDate()));
-    })();
-  </script>
-  <div style="max-width:1100px;margin:0 auto;padding:0 1rem 2rem 1rem;color:#555;font-size:.95rem;">
-    <hr style="margin:1.25rem 0;" />
-    <p><strong>Legend:</strong> M.M. = Monthly Meetings</p>
-    <p><strong>Note:</strong> Nov 8 — Saint Elizabeth memorial, community breakfast after 8.30 Mass.</p>
-  </div>
 </body>
 </html>
