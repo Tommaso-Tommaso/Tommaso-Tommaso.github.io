@@ -404,6 +404,9 @@ a:focus{ outline: 3px solid rgba(107,91,75,0.35); outline-offset: 2px; }
   white-space: nowrap;
 }
 
+/* Hide brand on the homepage to avoid repeating the large hero title */
+.home .nav-brand{ display:none !important; }
+
 /* Main Menu */
 .main-menu {
   list-style: none;
@@ -757,6 +760,11 @@ a:focus{ outline: 3px solid rgba(107,91,75,0.35); outline-offset: 2px; }
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+/* On the homepage, ensure 3 columns so 6 items render as 2 rows of 3 */
+@media (min-width: 1000px){
+  .home .saints-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); }
 }
 
 .saint-card {
