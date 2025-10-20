@@ -762,9 +762,12 @@ a:focus{ outline: 3px solid rgba(107,91,75,0.35); outline-offset: 2px; }
   padding: 0 1rem;
 }
 
-/* On the homepage, ensure 3 columns so 6 items render as 2 rows of 3 */
-@media (min-width: 1000px){
-  .home .saints-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+/* On the homepage, ensure 3 columns so 6 items render as 2 rows of 3 (Option A: earlier at 800px) */
+@media (min-width: 800px){
+  .home .saints-grid{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
 }
 
 .saint-card {
