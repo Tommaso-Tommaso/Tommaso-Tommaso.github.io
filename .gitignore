@@ -1,0 +1,16 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Logs / temp
+*.log
+*.tmp
+
+# Exported HTML bundles
+*_files/
+**/*_files/
+
+# Node tooling (if added later)
+node_modules/
+.env
