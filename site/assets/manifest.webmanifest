@@ -1,0 +1,10 @@
+{
+  "name": "Coastal Community of St. John of the Cross",
+  "short_name": "CCSJC",
+  "start_url": "/site/index.html",
+  "display": "standalone",
+  "background_color": "#f5f0e9",
+  "theme_color": "#5b3a2e",
+  "description": "A lay Carmelite community rooted in prayer, simplicity, and union with God.",
+  "icons": []
+}

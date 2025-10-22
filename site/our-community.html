@@ -9,24 +9,31 @@
   <meta property="og:description" content="Community life, heritage, and how to visit the Coastal Community of St. John of the Cross." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.coastalcommunityofstjohnofthecross.org/site/our-community.html" />
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="canonical" href="https://www.coastalcommunityofstjohnofthecross.org/site/our-community.html" />
+  <link rel="manifest" href="assets/manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>
     <h1>Our Community</h1>
     <p>Coastal Community of St. John of the Cross</p>
   </header>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="our-community.html">Our Community</a>
-    <a href="carmelite-saints.html">Carmelite Saints</a>
-    <a href="formation.html">Formation</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
+    <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">Menu</button>
+    <div id="primary-navigation" class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="our-community.html" class="active" aria-current="page">Our Community</a>
+      <a href="carmelite-saints.html">Carmelite Saints</a>
+      <a href="formation.html">Formation</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
-  <main>
+  <main id="main">
     <section>
       <h2>Our Community</h2>
       <p><em>Living the Carmelite charism in the world</em></p>
@@ -52,6 +59,7 @@
       <strong>Time:</strong> 9:30 AM - 11:00 AM<br>
       <strong>Where:</strong> Precious Blood of Christ, Pawley's Island</p>
       <p>Our monthly meetings include communal prayer, formation talks, Lectio Divina, and fraternal sharing. All inquirers are welcome to attend and discern their call to Carmelite life.</p>
+      <p><strong>Optional</strong>: On the 2nd Sunday of the month, we carpool to Columbia for Formation Study.</p>
 
       <h3>What We Do Together</h3>
       <h4>Prayer &amp; Formation</h4>
@@ -94,5 +102,6 @@
   <footer>
     &copy; 2025 Coastal Community of St. John of the Cross | <a href="contact.html">Email Us</a>
   </footer>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

@@ -9,24 +9,31 @@
   <meta property="og:description" content="Books, prayers, and links to deepen your Carmelite spiritual life." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.coastalcommunityofstjohnofthecross.org/site/resources.html" />
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg" />
   <link rel="canonical" href="https://www.coastalcommunityofstjohnofthecross.org/site/resources.html" />
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%235b3a2e'/%3E%3Crect x='28' y='10' width='8' height='44' fill='%23fff'/%3E%3Crect x='16' y='26' width='32' height='8' fill='%23fff'/%3E%3C/svg%3E" />
+  <link rel="manifest" href="assets/manifest.webmanifest">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>
     <h1>Resources</h1>
     <p>Coastal Community of St. John of the Cross</p>
   </header>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="our-community.html">Our Community</a>
-    <a href="carmelite-saints.html">Carmelite Saints</a>
-    <a href="formation.html">Formation</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
+    <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">Menu</button>
+    <div id="primary-navigation" class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="our-community.html">Our Community</a>
+      <a href="carmelite-saints.html">Carmelite Saints</a>
+      <a href="formation.html">Formation</a>
+      <a href="resources.html" class="active" aria-current="page">Resources</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
-  <main>
+  <main id="main">
     <section>
       <h2>Spiritual Resources</h2>
       <p><em>Books, prayers, and tools for the Carmelite journey</em></p>
@@ -92,5 +99,6 @@
   <footer>
     © 2025 Coastal Community of St. John of the Cross | <a href="contact.html">Email Us</a>
   </footer>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

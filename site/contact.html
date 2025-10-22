@@ -13,22 +13,27 @@
   <link rel="canonical" href="https://www.coastalcommunityofstjohnofthecross.org/site/contact.html" />
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%235b3a2e'/%3E%3Crect x='28' y='10' width='8' height='44' fill='%23fff'/%3E%3Crect x='16' y='26' width='32' height='8' fill='%23fff'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="manifest" href="assets/manifest.webmanifest">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>
     <h1>Contact</h1>
     <p>Coastal Community of St. John of the Cross</p>
   </header>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="our-community.html">Our Community</a>
-    <a href="carmelite-saints.html">Carmelite Saints</a>
-    <a href="formation.html">Formation</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
+    <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">Menu</button>
+    <div id="primary-navigation" class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="our-community.html">Our Community</a>
+      <a href="carmelite-saints.html">Carmelite Saints</a>
+      <a href="formation.html">Formation</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html" class="active" aria-current="page">Contact</a>
+    </div>
   </nav>
-  <main>
+  <main id="main">
     <section>
       <h2>Contact Us</h2>
       <p><em>We welcome your questions and inquiries</em></p>
@@ -52,6 +57,7 @@
       <p><strong>Location:</strong><br>
       Precious Blood of Christ, Pawley's Island<br>
       <a href="https://www.google.com/maps/search/?api=1&query=Precious+Blood+of+Christ+Pawley%27s+Island" target="_blank" rel="noopener">Open in Google Maps</a></p>
+      <p><strong>Optional</strong>: On the 2nd Sunday of the month, we carpool to Columbia for Formation Study.</p>
     </section>
 
     <section>
@@ -127,5 +133,6 @@
   <footer>
     © 2025 Coastal Community of St. John of the Cross | <a href="mailto:contact@coastalcommunityofstjohnofthecross.org">Email Us</a>
   </footer>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

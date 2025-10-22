@@ -9,24 +9,31 @@
   <meta property="og:description" content="Explore the Carmelite saints and their teachings that guide our contemplative life." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.coastalcommunityofstjohnofthecross.org/site/carmelite-saints.html" />
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg" />
   <link rel="canonical" href="https://www.coastalcommunityofstjohnofthecross.org/site/carmelite-saints.html" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="manifest" href="assets/manifest.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>
     <h1>Carmelite Saints</h1>
     <p>Coastal Community of St. John of the Cross</p>
   </header>
   <nav>
-    <a href="index.html">Home</a>
-    <a href="our-community.html">Our Community</a>
-    <a href="carmelite-saints.html">Carmelite Saints</a>
-    <a href="formation.html">Formation</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
+    <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">Menu</button>
+    <div id="primary-navigation" class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="our-community.html">Our Community</a>
+      <a href="carmelite-saints.html" class="active" aria-current="page">Carmelite Saints</a>
+      <a href="formation.html">Formation</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
-  <main>
+  <main id="main">
     <section>
       <h2>Our Saints &amp; Models in Carmel</h2>
       <p><em>The luminous guides who light our path to contemplative union with God</em></p>
@@ -52,7 +59,7 @@
           <h2>The Prophet Elijah</h2>
           <h3>Spiritual Father of Carmel</h3>
           <p>Elijah is the spiritual father of Carmel. With unwavering boldness, he stood before Israel, calling them back to the worship of the one true God (1 Kings 18). His life was filled with solitude, prophetic zeal, and trust in God's provision even in the wilderness.</p>
-          <p>As Carmelites, we recall Elijah's vigilance: "God lives, in whose presence I stand" (1 Kings 17:1). We strive to live in the awareness of God's presence and to proclaim truth in a world that often forgets Him. Elijah's witness on Mount Carmel—where he challenged the prophets of Baal—remains the foundation of our charism: single-hearted devotion to the Lord.</p>
+          <p>As Carmelites, we recall Elijah's vigilance—remaining in the Lord’s presence with attentive hearts. We strive to live in that awareness and to proclaim truth in a world that often forgets Him. Elijah's witness on Mount Carmel—where he challenged the prophets of Baal—remains the foundation of our charism: single-hearted devotion to the Lord.</p>
           <blockquote>"The Lord lives, in whose presence I stand." — 1 Kings 17:1</blockquote>
         </div>
       </div>
@@ -128,5 +135,6 @@
   <footer>
     &copy; 2025 Coastal Community of St. John of the Cross | <a href="contact.html">Email Us</a>
   </footer>
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>

@@ -8,6 +8,40 @@ body {
   color: #3b2f2f;
   line-height: 1.6;
 }
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  background: #fff;
+  color: var(--text);
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--brand);
+  border-radius: 6px;
+  z-index: 10000;
+}
+/* Tokens */
+:root {
+  --bg: #f5f0e9;
+  --text: #3b2f2f;
+  --text-weak: #4a3028;
+  --brand: #5b3a2e;
+  --brand-2: #7b3f00;
+  --surface: #e5d3c0;
+  --surface-2: #ede4d6;
+  --radius: 10px;
+  --shadow-sm: 0 1px 6px rgba(0,0,0,0.15);
+  --shadow-md: 0 2px 10px rgba(0,0,0,0.2);
+}
 header {
   background-color: #5b3a2e;
   color: #fff;
@@ -25,13 +59,22 @@ header p {
   font-style: italic;
   opacity: 0.9;
 }
+/* Sticky nav with shadow on scroll */
 nav {
-  background-color: #e5d3c0;
+  background-color: var(--surface);
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   padding: 0.6rem 1rem;
   gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+body.is-scrolled nav {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
 }
 nav a {
   text-decoration: none;
@@ -42,6 +85,29 @@ nav a {
 nav a:hover {
   color: #7b3f00;
 }
+nav a.active,
+nav a[aria-current="page"] {
+  color: var(--brand-2);
+  text-decoration: underline;
+}
+/* Mobile toggle */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 2px solid var(--text);
+  color: var(--text);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 700;
+}
+.nav-toggle,
+nav a,
+.button,
+button,
+input,
+textarea,
+select { font-family: 'Lato', 'Crimson Pro', serif; }
+.nav-links { display: contents; }
 main {
   max-width: 850px;
   margin: 2rem auto;
@@ -57,15 +123,24 @@ h2 {
   font-size: 1.5rem;
   color: #4a3028;
 }
-.hero {
-  background-image: url('../../../images/crucifixion_sketch.jpg');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 460px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  margin-bottom: 2rem;
+/* Accessible hero figure */
+.hero-figure {
+  margin: 0 0 2rem;
+  text-align: center;
+}
+.hero-figure img {
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 3 / 4;
+  height: auto;
+  display: inline-block;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+.hero-caption {
+  font-size: 0.9rem;
+  color: var(--text-weak);
+  margin-top: 0.5rem;
 }
 .quote {
   font-style: italic;
@@ -139,7 +214,8 @@ form button:hover {
 button:focus,
 input:focus,
 textarea:focus,
-select:focus {
+select:focus,
+a:focus {
   outline: 2px solid #7b3f00;
   outline-offset: 2px;
 }
@@ -178,4 +254,21 @@ select:focus {
     width: 60%;
     max-width: 260px;
   }
+}
+
+/* Type scale tweaks */
+@media (min-width: 480px) {
+  header h1 { font-size: clamp(2rem, 2vw + 1rem, 2.4rem); }
+}
+
+/* Mobile nav behavior */
+@media (max-width: 768px) {
+  .nav-toggle { display: inline-block; }
+  .nav-links {
+    width: 100%;
+    display: none;
+    justify-content: center;
+    gap: 1rem;
+  }
+  nav.open .nav-links { display: flex; }
 }

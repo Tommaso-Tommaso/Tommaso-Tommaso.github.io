@@ -11,7 +11,8 @@
   <meta property="og:url" content="https://www.coastalcommunityofstjohnofthecross.org/site/index.html" />
   <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg" />
   <link rel="canonical" href="https://www.coastalcommunityofstjohnofthecross.org/site/index.html" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%235b3a2e'/%3E%3Crect x='28' y='10' width='8' height='44' fill='%23fff'/%3E%3Crect x='16' y='26' width='32' height='8' fill='%23fff'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="manifest" href="assets/manifest.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script type="application/ld+json">
@@ -25,22 +26,29 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header>
     <h1>Coastal Community of St. John of the Cross</h1>
     <p>A Third Order Carmelite Community • Rooted in prayer, simplicity, and union with God</p>
   </header>
 
   <nav>
-    <a href="index.html">Home</a>
-    <a href="our-community.html">Our Community</a>
-    <a href="carmelite-saints.html">Carmelite Saints</a>
-    <a href="formation.html">Formation</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
+    <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">Menu</button>
+    <div id="primary-navigation" class="nav-links">
+      <a href="index.html" class="active" aria-current="page">Home</a>
+      <a href="our-community.html">Our Community</a>
+      <a href="carmelite-saints.html">Carmelite Saints</a>
+      <a href="formation.html">Formation</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
 
-  <main>
-    <div class="hero"></div>
+  <main id="main">
+    <figure class="hero-figure">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg" alt="St. John of the Cross crucifixion sketch" loading="lazy" width="900" height="1200" />
+      <figcaption class="hero-caption">Sketch of the Crucifixion by St. John of the Cross (public domain)</figcaption>
+    </figure>
 
     <section>
       <h2>Welcome</h2>
@@ -60,6 +68,7 @@
         <li>Formation in Carmelite spirituality</li>
         <li>Personal prayer and Lectio Divina</li>
         <li>Community service and fraternal support</li>
+        <li><strong>Optional</strong>: On the 2nd Sunday of the month, we carpool to Columbia for Formation Study.</li>
       </ul>
     </section>
 
@@ -73,5 +82,7 @@
   <footer>
     &copy; 2025 Coastal Community of St. John of the Cross | <a href="contact.html">Email Us</a>
   </footer>
+
+  <script src="assets/js/site.js" defer></script>
 </body>
 </html>
