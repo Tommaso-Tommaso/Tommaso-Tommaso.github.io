@@ -209,6 +209,57 @@ form button:hover {
   background: #4a3028;
 }
 
+/* Reflection Cards */
+.reflection-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.reflection-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reflection-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.reflection-card h3 {
+  margin-top: 0;
+  color: #5b3a2e;
+  font-size: 1.25rem;
+}
+
+.reflection-card h3 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.reflection-card h3 a:hover {
+  color: #7b3f00;
+  text-decoration: underline;
+}
+
+.reflection-card p {
+  color: #4a3028;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.coming-soon {
+  opacity: 0.7;
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+}
+
 /* Focus styles for accessibility */
 .button:focus,
 button:focus,

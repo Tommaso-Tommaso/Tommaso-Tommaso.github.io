@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.coastalcommunityofstjohnofthecross.org/sitemap.xml
+
+# Directories
+Disallow: /assets/
+Disallow: /css/
+Disallow: /js/
+
+# Files
+Disallow: /*.json$
+Disallow: /*.js$
+Disallow: /*.css$
+
+# Development and admin areas
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /search/
+Disallow: /*?s=
+
+# Allow search engines to index images
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+
+# Crawl-delay: 10  # Uncomment if needed to limit crawl rate
