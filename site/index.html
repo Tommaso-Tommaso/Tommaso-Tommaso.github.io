@@ -38,25 +38,62 @@
         },
         "description": "A lay Carmelite community rooted in prayer, simplicity, and union with God.",
         "foundingDate": "2020",
+        "foundingLocation": "Pawley's Island, SC",
         "sameAs": [
           "https://www.facebook.com/example",
           "https://www.instagram.com/example"
         ],
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "1633 Waverly Road",
           "addressLocality": "Pawley's Island",
           "addressRegion": "SC",
+          "postalCode": "29585",
           "addressCountry": "US"
         },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "inquiries",
-          "email": "sattias@sc.rr.com",
-          "availableLanguage": "English"
-        },
-        "memberOf": {
-          "@type": "Organization",
-          "name": "Order of Discalced Carmelites"
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "inquiries",
+            "email": "sattias@sc.rr.com",
+            "availableLanguage": "English"
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "meeting location",
+            "telephone": "+1-XXX-XXX-XXXX",
+            "areaServed": "Pawley's Island, SC",
+            "availableLanguage": "English"
+          }
+        ],
+        "memberOf": [
+          {
+            "@type": "Organization",
+            "name": "Order of Discalced Carmelites",
+            "url": "https://ocdspacificwest.org/"
+          }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Spiritual Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Monthly Community Meetings",
+                "description": "Join us for prayer, formation, and fellowship in the Carmelite tradition."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Spiritual Formation",
+                "description": "Grow in the Carmelite spiritual tradition through study and prayer."
+              }
+            }
+          ]
         }
       },
       {
@@ -75,18 +112,47 @@
         "image": {
           "@id": "https://www.coastalcommunityofstjohnofthecross.org/#primaryimage"
         },
-        "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg"
+        "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg",
+        "breadcrumb": {
+          "@id": "https://www.coastalcommunityofstjohnofthecross.org/#breadcrumb"
+        },
+        "mainEntity": [
+          {
+            "@type": "Event",
+            "@id": "https://www.coastalcommunityofstjohnofthecross.org/#event-november"
+          },
+          {
+            "@type": "Event",
+            "@id": "https://www.coastalcommunityofstjohnofthecross.org/#event-december"
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.coastalcommunityofstjohnofthecross.org/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.coastalcommunityofstjohnofthecross.org/"
+          }
+        ]
       },
       {
         "@type": "ImageObject",
         "@id": "https://www.coastalcommunityofstjohnofthecross.org/#primaryimage",
         "url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg",
         "width": 800,
-        "height": 1000
+        "height": 1000,
+        "caption": "Sketch of the Crucifixion by St. John of the Cross",
+        "license": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "creditText": "Public Domain"
       },
       {
         "@type": "Event",
-        "name": "Monthly Carmelite Community Meeting",
+        "@id": "https://www.coastalcommunityofstjohnofthecross.org/#event-november",
+        "name": "Monthly Carmelite Community Meeting - November",
         "startDate": "2025-11-21T09:30:00-05:00",
         "endDate": "2025-11-21T11:00:00-05:00",
         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -103,7 +169,8 @@
             "addressRegion": "SC",
             "postalCode": "29585",
             "addressCountry": "US"
-          }
+          },
+          "hasMap": "https://www.google.com/maps/place/Precious+Blood+of+Christ+Catholic+Church/@33.44047,-79.14378,17z/"
         },
         "organizer": {
           "@id": "https://www.coastalcommunityofstjohnofthecross.org/#organization"
@@ -116,11 +183,66 @@
           "price": "0",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
-          "validFrom": "2025-10-26T00:00:00-05:00"
+          "validFrom": "2025-10-26T00:00:00-05:00",
+          "url": "https://www.coastalcommunityofstjohnofthecross.org/join.html"
         },
         "performer": {
           "@type": "PerformingGroup",
           "name": "Coastal Community of St. John of the Cross"
+        },
+        "eventSchedule": {
+          "@type": "Schedule",
+          "repeatFrequency": "P1M",
+          "byMonthDay": [21],
+          "byDay": "https://schema.org/Friday"
+        }
+      },
+      {
+        "@type": "Event",
+        "@id": "https://www.coastalcommunityofstjohnofthecross.org/#event-december",
+        "name": "Monthly Carmelite Community Meeting - December",
+        "startDate": "2025-12-19T09:30:00-05:00",
+        "endDate": "2025-12-19T11:00:00-05:00",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "description": "Join us for our monthly gathering featuring prayer, formation, and fellowship in the Carmelite tradition.",
+        "isAccessibleForFree": true,
+        "location": {
+          "@type": "Place",
+          "name": "Precious Blood of Christ Catholic Church",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1633 Waverly Road",
+            "addressLocality": "Pawley's Island",
+            "addressRegion": "SC",
+            "postalCode": "29585",
+            "addressCountry": "US"
+          },
+          "hasMap": "https://www.google.com/maps/place/Precious+Blood+of+Christ+Catholic+Church/@33.44047,-79.14378,17z/"
+        },
+        "organizer": {
+          "@id": "https://www.coastalcommunityofstjohnofthecross.org/#organization"
+        },
+        "image": [
+          "https://upload.wikimedia.org/wikipedia/commons/9/9a/John_of_the_Cross_crucifixion_sketch.jpg"
+        ],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "validFrom": "2025-10-26T00:00:00-05:00",
+          "url": "https://www.coastalcommunityofstjohnofthecross.org/join.html"
+        },
+        "performer": {
+          "@type": "PerformingGroup",
+          "name": "Coastal Community of St. John of the Cross"
+        },
+        "eventSchedule": {
+          "@type": "Schedule",
+          "repeatFrequency": "P1M",
+          "byMonthDay": [19],
+          "byDay": "https://schema.org/Friday"
         }
       }
     ]
@@ -149,6 +271,12 @@
   </nav>
 
   <main id="main">
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+      <ol>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+      </ol>
+    </nav>
+    
     <section class="hero-section">
       <div class="hero-content">
         <h1>Welcome to Our Carmelite Community</h1>
@@ -168,7 +296,7 @@
 
     <section>
       <h2>Welcome</h2>
-      <p>We are a community of lay men and women following the Carmelite tradition of contemplative prayer and service, inspired by the life and writings of <strong>St. John of the Cross</strong>. Guided by the spirit of the Blessed Virgin Mary, we seek to grow in the interior life and in the love of God through silence, simplicity, and fraternity.</p>
+      <p>We are a community of lay men and women following the Carmelite tradition of contemplative prayer and service, inspired by the life and writings of <strong>Saint Teresa of Avila</strong> and <strong>St. John of the Cross</strong>. Guided by the spirit of the Blessed Virgin Mary, we seek to grow in the interior life and in the love of God through silence, simplicity, and fraternity.</p>
 
       <div class="quote">
         “In the twilight of life, God will not judge us on our earthly possessions or human success, but on how well we have loved.”  
@@ -206,6 +334,88 @@
     </section>
     
     <style>
+      /* Breadcrumb Navigation */
+      .breadcrumb {
+        font-size: 0.9rem;
+        margin: 0.5rem 0 1.5rem;
+        padding: 0.5rem 0;
+        color: #5b3a2e;
+      }
+      
+      .breadcrumb ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      
+      .breadcrumb li {
+        display: inline;
+        margin-right: 0.5rem;
+      }
+      
+      .breadcrumb li:not(:last-child)::after {
+        content: '›';
+        margin-left: 0.5rem;
+        color: #7b3f00;
+      }
+      
+      .breadcrumb a {
+        color: #5b3a2e;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      
+      .breadcrumb a:hover {
+        color: #7b3f00;
+        text-decoration: underline;
+      }
+      
+      .breadcrumb [aria-current="page"] {
+        color: #7b3f00;
+        font-weight: 600;
+        text-decoration: none;
+        pointer-events: none;
+      }
+      
+      /* Hero Section Styles */
+      .hero-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto 2rem;
+      }
+      
+      .hero-image {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+      
+      .hero-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin: 0 auto;
+      }
+      
+      .hero-caption {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: #666;
+        font-style: italic;
+      }
+      
       .upcoming-meetings {
         margin: 1.5rem 0;
       }
